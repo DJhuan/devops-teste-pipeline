@@ -32,3 +32,17 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo A python script was run!
+
+      - name: Docker Buildx config
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build da imagem Docker
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: minha-imagem:latest
+          
+      - name: Run another one-line script
+        run: echo A Docket build was run!
